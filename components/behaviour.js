@@ -2,32 +2,16 @@ import React, { Component } from 'react';
 import { Button , StyleSheet, Text, View , ImageBackground, TouchableOpacity } from 'react-native';
 
 
-export default class tell_me extends Component {
+export default class behaviour extends Component {
 
   render() {
     return (
         <View style={styles.container}>
           <ImageBackground 
-          source = {require('../images/dog.jpg')}
+          source = {require('../images/snow_cap.jpg')}
           style = {{width : '100%' , height : '100%'}}
           >
-            <View style = {styles.container} >
-              <Text style ={styles.textstyle}>
-                  Would you like to tell me something right now ?
-                  </Text>
-                <View style={{ flexDirection:"row", fontSize : 70 }}>
-                    
-                    <TouchableOpacity style ={styles.Buttons}>
-                        <Text style = {{fontSize : 40}}>No</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                    style = {styles.Buttons_no} 
-                    onPress={() => this.props.navigation.navigate('behaviour')} >
-                    <Text style = {{fontSize : 40}}>Yes</Text>
-                    </TouchableOpacity>
-                    
-                </View>
-          </View>
+
         </ImageBackground>
   
       </View>

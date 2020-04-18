@@ -6,6 +6,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import homescreen from './components/homescreen';
 import second_screen from './components/second_screen';
 import tell_me from './components/tell_me';
+import behaviour from './components/behaviour';
 
 
 export default class App extends React.Component {
@@ -29,6 +30,12 @@ const AppNavigator = createStackNavigator({
   },
   tell_me: {
     screen: tell_me,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  behaviour: {
+    screen: behaviour,
     navigationOptions: {
       header: null,
     }
