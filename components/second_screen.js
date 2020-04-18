@@ -22,7 +22,7 @@ export default class second_screen extends Component{
           <Text style ={styles.textstyle}  >
             "{quotesGo.getRandomQuote().text}"
           </Text>
-          <TouchableOpacity style={styles.Buttons}>
+          <TouchableOpacity style={styles.Buttons} onPress={() => this.props.navigation.navigate('tell_me')}>
             <Text style ={{color : 'black' ,fontSize : 30,fontFamily: 'AvenirNext-Bold'}}>Check in</Text>
           </TouchableOpacity>
         </View>

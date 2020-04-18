@@ -24,7 +24,7 @@ export default class homescreen extends Component {
                 left : -10,
                 top : 60
                 }}> 
-                        Quies
+                        Serenus
               </Text>
             
             <TouchableOpacity style = {styles.Buttons}

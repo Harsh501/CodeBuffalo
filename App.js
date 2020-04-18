@@ -5,6 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import homescreen from './components/homescreen';
 import second_screen from './components/second_screen';
+import tell_me from './components/tell_me';
 
 
 export default class App extends React.Component {
@@ -25,7 +26,13 @@ const AppNavigator = createStackNavigator({
     navigationOptions: {
       header: null,
     }
-  }
+  },
+  tell_me: {
+    screen: tell_me,
+    navigationOptions: {
+      header: null,
+    }
+  },
 });
 
 const AppContainer = createAppContainer(AppNavigator);
