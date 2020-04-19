@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button , StyleSheet, Text, View , ImageBackground, Image,TouchableOpacity } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import Modal from 'react-native-modal';
 
 {/*  */}
 const images = ["../images/happy_logo.jpeg" , "../images/calm.jpg"];
@@ -9,7 +10,7 @@ export default class behaviour extends Component {
         super(props);
         this.state = {
             pressStatus : false,
-            
+            isModalVisible:false,
             tableData: [               
 
                 [
@@ -19,7 +20,7 @@ export default class behaviour extends Component {
                         {/* 1 image */}
                         <Image
                         source={require("../images/happy_logo.jpeg")}
-                        style={{height : 80 , width : 80}}
+                        style={{height : 80 , width : 80 , left :7}}
                         />
                     </TouchableOpacity>,
                     <TouchableOpacity>
@@ -47,7 +48,7 @@ export default class behaviour extends Component {
                 <TouchableOpacity>
                     <Image
                     source={require("../images/sad_1.jpg")}
-                    style={{height : 75 , width :78}}
+                    style={{height : 75 , width :75, left :10}}
                     />
             </TouchableOpacity>,
             <TouchableOpacity>
@@ -72,9 +73,13 @@ export default class behaviour extends Component {
             ]
         }
       }
+      
   render() {
     const state = this.state;
-    let count = 5;
+    
+    openModal = () =>{this.setState({isModalVisible:true})}
+    closeModal = () =>{this.setState({isModalVisible:false})}
+    
     return (
         <View style={styles.container}>
             <ImageBackground 
@@ -96,13 +101,38 @@ export default class behaviour extends Component {
                                 ))
                          }
                     </Table>
-                    <TouchableOpacity>
+                    
+                    <TouchableOpacity
+                    onPress={() => openModal()}
+                    >
+                        <Modal 
+                        isVisible={this.state.isModalVisible}
+                        onBackdropPress={()=>closeModal()}
+                        onSwipeComplete={()=>closeModal()}
+                        animationIn="slideInRight" 
+                        animationOut="slideOutLeft" 
+                        >
+                            <View style={{ flex: 1 }}>
+                                <Text>This is the modal content for now!</Text>
+                            </View> 
+                            <View style={{flexDirection:'row',}}>
+                            <TouchableOpacity style={{backgroundColor:'green',width:'50%'}}>
+                                <Text style={{color:'white',textAlign:'center',padding:10}}>Ok</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{backgroundColor:'red',width:'50%'}} onPress={()=>closeModal()}>
+                                <Text style={{color:'white',textAlign:'center',padding:10}}>Cancel
+                                </Text>
+                            </TouchableOpacity>
+                            </View>
+                        </Modal>
                 <Image
                         source={require("../images/scribble.jpg")}
                         style={styles.scribble}
                         />
                         <Text style = {styles.scrrible_text}>I dont know !</Text>
+
                 </TouchableOpacity>
+                
                 </View>
                 
         </ImageBackground>
@@ -174,5 +204,9 @@ const styles = StyleSheet.create({
       bottom : -135,
       left:30,
       fontFamily: 'AvenirNext-Bold',
-      fontSize : 25,}
+      fontSize : 25,},
+    modal :{
+        justifyContent:'center',
+        textAlign:'center'
+    }
 });
