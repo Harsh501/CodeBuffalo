@@ -96,14 +96,15 @@ export default class behaviour extends Component {
                                 ))
                          }
                     </Table>
-                </View>
-                <TouchableOpacity>
+                    <TouchableOpacity>
                 <Image
                         source={require("../images/scribble.jpg")}
                         style={styles.scribble}
                         />
                         <Text style = {styles.scrrible_text}>I dont know !</Text>
                 </TouchableOpacity>
+                </View>
+                
         </ImageBackground>
       </View>
     )
@@ -166,11 +167,11 @@ const styles = StyleSheet.create({
     left:-165
   },
   row: { flexDirection: 'row' },
-  scribble:{width:100 , height : 100  , bottom : -250 , left : 30},
+  scribble:{width:100 , height : 100  , bottom : -130 , left : 30},
   scrrible_text: { 
       margin: 0,
       height : 100,
-      bottom : -258,
+      bottom : -135,
       left:30,
       fontFamily: 'AvenirNext-Bold',
       fontSize : 25,}
