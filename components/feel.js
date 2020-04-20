@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button , StyleSheet, Text, View , ImageBackground, TouchableOpacity ,TouchableHighlight } from 'react-native';
+import { TextInput } from 'react-native-paper';
 
 
 export default class feel extends Component {
@@ -13,7 +14,8 @@ export default class feel extends Component {
       friends : false,
       dating: false,
       other : false,
-      Not_Sure : false
+      Not_Sure : false,
+      text : ''
      };
     }
   render() {
@@ -118,7 +120,44 @@ export default class feel extends Component {
               >
                 <Text>Not sure!</Text>
               </TouchableHighlight>
+
             </View>
+            <View>
+            <TextInput 
+                  style = {styles.text_box} 
+                  label='Is there anything else you would like to add ?'
+                  theme={{
+                    roundness: 50,
+                    colors: {
+                      primary:'grey',
+                      underlineColor:'transparent',
+                      
+                    }
+                  }}
+                  />
+
+                  
+            </View>
+            
+            <TouchableOpacity 
+            style = {{
+              left :64,
+              bottom : 165,
+              width : 240,
+              height :80,
+              position : 'absolute',
+              borderColor:'black',
+              borderWidth : 3,
+              borderRadius : 40,
+              alignItems: 'center',
+            }}
+            onPress={() => this.props.navigation.navigate('second_page')}
+            >
+              <Text style = {{
+                margin : 22,
+              fontFamily: 'AvenirNext-Bold',
+              fontSize : 20}}>Submit</Text>
+            </TouchableOpacity>
         </ImageBackground>
   
       </View>
@@ -232,5 +271,17 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 40,
     bottom : 145
   },
-
+  text_box:{
+    bottom : 100,
+    backgroundColor: 'rgba(0,0,0,0)',
+    borderColor: '#48BBEC',
+    width : '95%',
+    left:8,
+    bottom : 270,
+    position : 'absolute',
+    fontSize: 16,
+    flex :1,
+    justifyContent: 'center',
+    height : 70,
+  }
 });
