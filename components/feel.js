@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
-import { Button , StyleSheet, Text, View , ImageBackground, TouchableOpacity } from 'react-native';
+import { Button , StyleSheet, Text, View , ImageBackground, TouchableOpacity ,TouchableHighlight } from 'react-native';
 
 
 export default class feel extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = { 
+      work: false,
+      school : false,
+      family : false,
+      partner : false,
+      friends : false,
+      dating: false,
+      other : false,
+      Not_Sure : false
+     };
+    }
   render() {
     return (
         <View style={styles.container}>
@@ -15,32 +27,97 @@ export default class feel extends Component {
               <Text style ={styles.textstyle}>
                   Why do you feel that way ?
               </Text>
-              <TouchableOpacity style = {styles.Buttons}>
+              <TouchableHighlight
+                  underlayColor="rgba(0, 0, 0, 0)"
+                  style={
+                  this.state.work
+                  ? styles.ButtonPress
+                  : styles.Buttons
+                  }
+                  onPress={() => this.setState({work: !this.state.work})}
+              >
                 <Text>Work</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style = {styles.Buttons}>
+              </TouchableHighlight>
+              <TouchableHighlight
+                  underlayColor="rgba(0, 0, 0, 0)"
+                  style={
+                  this.state.school
+                  ? styles.ButtonPress
+                  : styles.Buttons
+                  }
+                  onPress={() => this.setState({school: !this.state.school})}
+              >
                 <Text>School</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style = {styles.Buttons}>
+              </TouchableHighlight>
+              <TouchableHighlight
+                  underlayColor="rgba(0, 0, 0, 0)"
+                  style={
+                  this.state.family
+                  ? styles.ButtonPress
+                  : styles.Buttons
+                  }
+                  onPress={() => this.setState({family: !this.state.family})}
+              >
                 <Text>Family</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style = {styles.Buttons}>
+              </TouchableHighlight>
+              <TouchableHighlight
+                  underlayColor="rgba(0, 0, 0, 0)"
+                  style={
+                  this.state.partner
+                  ? styles.ButtonPress
+                  : styles.Buttons
+                  }
+                  onPress={() => this.setState({partner: !this.state.partner})}
+              >
                 <Text>Partner</Text>
-              </TouchableOpacity>
+              </TouchableHighlight>
             </View>
             <View style = {styles.container_2}>
-              <TouchableOpacity style = {styles.Buttons_2}>
-                <Text>Family</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style = {styles.Buttons_2}>
+              <TouchableHighlight
+                  underlayColor="rgba(0, 0, 0, 0)"
+                  style={
+                  this.state.friends
+                  ? styles.Buttonspress_2
+                  : styles.Buttons_2
+                  }
+                  onPress={() => this.setState({friends: !this.state.friends})}
+              >
                 <Text>Friends</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style = {styles.Buttons_2}>
+              </TouchableHighlight>
+              <TouchableHighlight
+                  underlayColor="rgba(0, 0, 0, 0)"
+                  style={
+                  this.state.dating
+                  ? styles.Buttonspress_2
+                  : styles.Buttons_2
+                  }
+                  onPress={() => this.setState({dating: !this.state.dating})}
+              >
                 <Text>Dating</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style = {styles.Buttons_2}>
+              </TouchableHighlight>
+              <TouchableHighlight
+                  underlayColor="rgba(0, 0, 0, 0)"
+                  style={
+                  this.state.other
+                  ? styles.Buttonspress_2
+                  : styles.Buttons_2
+                  }
+                  onPress={() => this.setState({other: !this.state.other})}
+              >
+                <Text>Other</Text>
+              </TouchableHighlight>
+              <TouchableHighlight
+                  
+                  underlayColor="rgba(0, 0, 0, 0)"
+                  style={
+                  this.state.Not_Sure
+                  ? styles.Buttonspress_2
+                  : styles.Buttons_2
+                  }
+                  onPress={() => this.setState({Not_Sure: !this.state.Not_Sure})}
+              >
                 <Text>Not sure!</Text>
-              </TouchableOpacity>
+              </TouchableHighlight>
             </View>
         </ImageBackground>
   
@@ -81,12 +158,31 @@ const styles = StyleSheet.create({
     marginRight : 10,
     marginLeft : 10,
     height: 50, 
-    color : 'white',
     borderColor:'black', 
-    borderBottomWidth:2,
-    borderTopWidth:2,
-    borderLeftWidth:2,
-    borderRightWidth:2,
+    borderBottomWidth:3,
+    borderTopWidth:3,
+    borderLeftWidth:3,
+    borderRightWidth:3,
+    justifyContent: 'center', 
+    alignItems: 'center',
+    position: 'relative',
+    borderTopRightRadius: 40,
+    borderTopLeftRadius: 40,
+    borderBottomRightRadius: 40,
+    borderBottomLeftRadius: 40,
+    bottom : -10
+  },
+  ButtonPress:{
+    width : 130,
+    flex: 1,
+    marginRight : 10,
+    marginLeft : 10,
+    height: 50, 
+    borderColor:'blue', 
+    borderBottomWidth:3,
+    borderTopWidth:3,
+    borderLeftWidth:3,
+    borderRightWidth:3,
     justifyContent: 'center', 
     alignItems: 'center',
     position: 'relative',
@@ -102,12 +198,11 @@ const styles = StyleSheet.create({
     marginRight : 10,
     marginLeft : 10,
     height: 50, 
-    color : 'white',
     borderColor:'black', 
-    borderBottomWidth:2,
-    borderTopWidth:2,
-    borderLeftWidth:2,
-    borderRightWidth:2,
+    borderBottomWidth:3,
+    borderTopWidth:3,
+    borderLeftWidth:3,
+    borderRightWidth:3,
     justifyContent: 'center', 
     alignItems: 'center',
     position: 'relative',
@@ -116,5 +211,26 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 40,
     borderBottomLeftRadius: 40,
     bottom : 145
-  }
+  },
+  Buttonspress_2:{
+    width : 130,
+    flex: 1,
+    marginRight : 10,
+    marginLeft : 10,
+    height: 50, 
+    borderColor:'blue', 
+    borderBottomWidth:3,
+    borderTopWidth:3,
+    borderLeftWidth:3,
+    borderRightWidth:3,
+    justifyContent: 'center', 
+    alignItems: 'center',
+    position: 'relative',
+    borderTopRightRadius: 40,
+    borderTopLeftRadius: 40,
+    borderBottomRightRadius: 40,
+    borderBottomLeftRadius: 40,
+    bottom : 145
+  },
+
 });
