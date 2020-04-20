@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Button , StyleSheet, Text, View , ImageBackground, Image,TouchableOpacity } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import Modal from 'react-native-modal';
+import ExpoPixi from 'expo-pixi'
+
+
 
 {/*  */}
-const images = ["../images/happy_logo.jpeg" , "../images/calm.jpg"];
+
 export default class behaviour extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +18,7 @@ export default class behaviour extends Component {
 
                 [
                     <TouchableOpacity 
-                        // onPress={() => this.props.navigation.navigate('second_page')}
+                        onPress={() => this.props.navigation.navigate('feeling')}
                     >
                         {/* 1 image */}
                         <Image
@@ -23,21 +26,28 @@ export default class behaviour extends Component {
                         style={{height : 80 , width : 80 , left :7}}
                         />
                     </TouchableOpacity>,
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('feeling')}
+                    >
                             <Image
                             source={require("../images/calm.jpg")}
                             style={{height : 80 , width : 90}}
+                            
                             />
                     </TouchableOpacity>
                     ,
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('feeling')}
+                    >
                         <Image
                         source={require("../images/star_eyed.jpeg")}
                         style={{height : 80 , width : 90}}
                         />
                     </TouchableOpacity>
                     ,
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('feeling')}
+                    >
                         <Image
                         source={require("../images/neutral_1.jpg")}
                         style={{height : 80 , width :95}}
@@ -45,40 +55,57 @@ export default class behaviour extends Component {
                 </TouchableOpacity>
                 ],
                 [                    
-                <TouchableOpacity>
-                    <Image
-                    source={require("../images/sad_1.jpg")}
-                    style={{height : 75 , width :75, left :10}}
-                    />
-            </TouchableOpacity>,
-            <TouchableOpacity>
-                    <Image
-                    source={require("../images/angry.jpg")}
-                    style={{height : 75 , width :100}}
-                    />
-            </TouchableOpacity>,
-            <TouchableOpacity>
-                    <Image
-                    source={require("../images/nervous_1.png")}
-                    style={{height : 80 , width :85 , left:8}}
-                    />
-            </TouchableOpacity>,
-            <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('feeling')}
+                    >
                         <Image
-                        source={require("../images/anxious_1.jpeg")}
-                        style={{height : 80 , width :80 ,left :10}}
+                        source={require("../images/sad_1.jpg")}
+                        style={{height : 75 , width :75, left :10}}
                         />
-            </TouchableOpacity>
-            ],
+                </TouchableOpacity>,
+                <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate('feeling')}
+                >
+                        <Image
+                        source={require("../images/angry.jpg")}
+                        style={{height : 75 , width :100}}
+                        />
+                </TouchableOpacity>,
+                <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate('feeling')}
+                >
+                        <Image
+                        source={require("../images/nervous_1.png")}
+                        style={{height : 80 , width :85 , left:8}}
+                        />
+                </TouchableOpacity>,
+                <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate('feeling')}
+                >
+                            <Image
+                            source={require("../images/anxious_1.jpeg")}
+                            style={{height : 80 , width :80 ,left :10}}
+                            />
+                </TouchableOpacity>
+                ],
             ]
         }
       }
       
   render() {
     const state = this.state;
-    
+    const color = 0x000000;
+    const width = 4;
+    const alpha = 1;
+
     openModal = () =>{this.setState({isModalVisible:true})}
     closeModal = () =>{this.setState({isModalVisible:false})}
+    nav = () => {this.props.navigation.navigate('feeling')}
+    function Combined() {
+        closeModal();
+        nav();
+    } 
+
     
     return (
         <View style={styles.container}>
@@ -106,21 +133,53 @@ export default class behaviour extends Component {
                     onPress={() => openModal()}
                     >
                         <Modal 
-                        isVisible={this.state.isModalVisible}
-                        onBackdropPress={()=>closeModal()}
-                        onSwipeComplete={()=>closeModal()}
-                        animationIn="slideInRight" 
-                        animationOut="slideOutLeft" 
+                            isVisible={this.state.isModalVisible}
+                            onBackdropPress={()=>closeModal()}
+                            onSwipeComplete={()=>closeModal()}
+                            animationIn="slideInRight" 
+                            animationOut="slideOutLeft" 
+                            style = {{width: 3, height : 1  ,}}
                         >
-                            <View style={{ flex: 1 }}>
-                                <Text>This is the modal content for now!</Text>
-                            </View> 
-                            <View style={{flexDirection:'row',}}>
-                            <TouchableOpacity style={{backgroundColor:'green',width:'50%'}}>
-                                <Text style={{color:'white',textAlign:'center',padding:10}}>Ok</Text>
+                        <View style={{ flex: 1 , width : 300,left :20 }}>
+                            <ExpoPixi.Sketch
+                                ref={ref => (this.sketch = ref)}
+                                strokeColor={color}
+                                strokeWidth={width}
+                                strokeAlpha={alpha}
+                                style={{ flex: 1  , backgroundColor : 'yellow'}}/>
+                        </View>
+
+                        <View style={{flexDirection:'row',}}>
+                            <TouchableOpacity 
+                                style = {{
+                                    backgroundColor:'green',
+                                    width:150,
+                                    left: 20
+                                    }}
+                                
+                                onPress={() => Combined()}
+                                
+                                    >
+                                        <Text 
+                                            style = {{
+                                                color:'white',
+                                                textAlign:'center',
+                                                padding:10
+                                            }}>
+                                                Save
+                                        </Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{backgroundColor:'red',width:'50%'}} onPress={()=>closeModal()}>
-                                <Text style={{color:'white',textAlign:'center',padding:10}}>Cancel
+                            <TouchableOpacity 
+                                style = {{
+                                    backgroundColor:'red',
+                                    width:150,
+                                    left: 20
+                                    }} onPress={()=>closeModal()}>
+                                <Text style = {{
+                                    color:'white',
+                                    textAlign:'center',
+                                    padding:10}}>
+                                        Cancel
                                 </Text>
                             </TouchableOpacity>
                             </View>
