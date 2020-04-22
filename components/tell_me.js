@@ -17,7 +17,10 @@ export default class tell_me extends Component {
                   </Text>
                 <View style={{ flexDirection:"row", fontSize : 70 }}>
                     
-                    <TouchableOpacity style ={styles.Buttons}>
+                    <TouchableOpacity 
+                      style ={styles.Buttons}
+                      onPress={() => this.props.navigation.navigate('ToolKit')}
+                    >
                         <Text style = {{fontSize : 40}}>No</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 

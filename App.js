@@ -8,6 +8,7 @@ import second_screen from './components/second_screen';
 import tell_me from './components/tell_me';
 import behaviour from './components/behaviour';
 import feel from './components/feel'
+import toolKit from './components/toolKit';
 
 
 export default class App extends React.Component {
@@ -46,7 +47,13 @@ const AppNavigator = createStackNavigator({
     navigationOptions: {
       header: null,
     }
-  }
+  },
+  ToolKit :{
+    screen:toolKit,
+    navigationOptions: {
+      header: null,
+    }
+  },
 });
 
 const AppContainer = createAppContainer(AppNavigator);

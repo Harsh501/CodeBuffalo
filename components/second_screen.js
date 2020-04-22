@@ -17,7 +17,7 @@ export default class second_screen extends Component{
       >
         <View style = {styles.container} >
         <Text style ={styles.textstyle_name}  >
-            Hello, Harsh!
+            Hello,  {this.props.navigation.getParam("username")}!
           </Text>
           <Text style ={styles.textstyle}  >
             "{quotesGo.getRandomQuote().text}"
