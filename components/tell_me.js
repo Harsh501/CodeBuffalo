@@ -1,10 +1,76 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View , ImageBackground, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View , ImageBackground, TouchableOpacity,Button } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+// import BottomNav from './Bottom';
+import homescreen from './homescreen';
+import emergency from './emergency';
+import second_screen from './second_screen';
+import { Ionicons } from '@expo/vector-icons';
+import analytics from './analytics';
 
-import Bottom from './Bottom';
+
 export default class tell_me extends Component {
 
   render() {
+    const NavStack = createBottomTabNavigator({
+      ScreenOne: { 
+          screen:emergency,
+          navigationOptions: {
+              tabBarLabel: 'Panic', 
+              tabBarIcon: ({ tintColor , navigation }) => (
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('emergency')}>
+                    <Ionicons name="ios-alert" color={tintColor} size={25}  />
+                  </TouchableOpacity>
+              ),
+              tabBarOptions: { 
+                  activeTintColor:'red',
+                  style: {
+                      borderTopWidth: 0,
+                      backgroundColor: 'transparent',
+                  }
+              },
+              
+          },
+      },
+      ScreenTwo: { 
+          screen: second_screen,
+          navigationOptions: {
+              tabBarLabel: 'Home', 
+              tabBarIcon: ({ tintColor }) => (
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('second_page')}>
+                  <Ionicons name="ios-home" color={tintColor} size={25}  />
+                </TouchableOpacity>
+              ),
+              tabBarOptions: { 
+                  style: {
+                      borderTopWidth: 0,
+                      backgroundColor: 'transparent',
+                  }
+              }
+          },
+      },
+      Screenfour: { 
+          screen: analytics,
+          navigationOptions: {
+              tabBarLabel: 'Health Analysis', 
+              tabBarIcon: ({ tintColor }) => (
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('analytics')}>
+                  <Ionicons name="ios-analytics" color={tintColor} size={25}  />
+                </TouchableOpacity>
+              ),
+              tabBarOptions: { 
+                  style: {
+                      borderTopWidth: 0,
+                      backgroundColor: 'transparent',
+                  }
+              }
+          },
+      }
+      
+    });
+    
+    const Bottom = createAppContainer(NavStack);
     return (
         <View style={styles.container}>
           
@@ -101,6 +167,6 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 40,
     borderBottomLeftRadius: 40,
     left:-150,
-    marginLeft : -10
+    marginLeft : -13
   }
 });

@@ -9,6 +9,8 @@ import tell_me from './components/tell_me';
 import behaviour from './components/behaviour';
 import feel from './components/feel'
 import toolKit from './components/toolKit';
+import emergency from './components/emergency';
+import analytics from './components/analytics';
 
 
 export default class App extends React.Component {
@@ -54,6 +56,18 @@ const AppNavigator = createStackNavigator({
       header: null,
     }
   },
+  emergency: { 
+    screen: emergency,
+    navigationOptions: {
+      header: null,
+    }
+},
+analytics: { 
+  screen: analytics,
+  navigationOptions: {
+    header: null,
+  }
+},
 });
 
 const AppContainer = createAppContainer(AppNavigator);

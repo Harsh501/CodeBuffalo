@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import { Button , StyleSheet, Text, View , ImageBackground, Image,TouchableOpacity } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import Modal from 'react-native-modal';
-import ExpoPixi from 'expo-pixi'
+import ExpoPixi from 'expo-pixi';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import homescreen from './homescreen';
+import emergency from './emergency';
+import second_screen from './second_screen';
+import { Ionicons } from '@expo/vector-icons';
+import analytics from './analytics';
+import tell_me from './tell_me';
 
 
 
-{/*  */}
 
 export default class behaviour extends Component {
     constructor(props) {
@@ -93,6 +100,87 @@ export default class behaviour extends Component {
       }
       
   render() {
+    const NavStack = createBottomTabNavigator({
+        ScreenOne: { 
+            screen:emergency,
+            navigationOptions: {
+                tabBarLabel: 'Panic', 
+                tabBarIcon: ({ tintColor , navigation }) => (
+                    <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('emergency')}>
+                    <Ionicons name="ios-alert" color={tintColor} size={25}  />
+                    </TouchableOpacity>
+                ),
+                tabBarOptions: { 
+                    activeTintColor:'red',
+                    inactiveTintColor:'gray',
+                    style: {
+                        borderTopWidth: 0,
+                        backgroundColor: 'transparent',
+                    }
+                },
+                
+            },
+        },
+        ScreenTwo: { 
+            screen: second_screen,
+            navigationOptions: {
+                tabBarLabel: 'Home', 
+                tabBarIcon: ({ tintColor }) => (
+                  <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('second_page')}>
+                  <Ionicons name="ios-home" color={tintColor} size={25}  />
+                  </TouchableOpacity>
+                ),
+                tabBarOptions: { 
+                    activeTintColor:'black',
+                    inactiveTintColor:'black',
+                    style: {
+                        borderTopWidth: 0,
+                        backgroundColor: 'transparent',
+                    }
+                }
+            },
+        },
+        Screenthree: { 
+            screen: tell_me,
+            navigationOptions: {
+                tabBarLabel: 'Start Over', 
+                tabBarIcon: ({ tintColor }) => (
+                  <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('tell_me')}>
+                  <Ionicons name="ios-add" color={tintColor} size={30}  />
+                  </TouchableOpacity>
+                ),
+                tabBarOptions: { 
+                    activeTintColor:'black',
+                    inactiveTintColor:'black',
+                    style: {
+                        borderTopWidth: 0,
+                        backgroundColor: 'transparent',
+                    }
+                }
+            },
+        },
+        Screenfour: { 
+            screen: analytics,
+            navigationOptions: {
+                tabBarLabel: 'Health Analysis', 
+                tabBarIcon: ({ tintColor }) => (
+                  <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('analytics')}>
+                  <Ionicons name="ios-analytics" color={tintColor} size={25}  />
+                  </TouchableOpacity>
+                ),
+                tabBarOptions: { 
+                    
+                    style: {
+                        borderTopWidth: 0,
+                        backgroundColor: 'transparent',
+                    }
+                }
+            },
+        }
+        
+      });
+      
+    const Bottom = createAppContainer(NavStack);
     const state = this.state;
     const color = 0x000000;
     const width = 4;
@@ -191,7 +279,15 @@ export default class behaviour extends Component {
                         <Text style = {styles.scrrible_text}>I dont know !</Text>
 
                 </TouchableOpacity>
-                
+                <View style = {{position: 'absolute',
+                        bottom:-155,
+                        width : '100%',
+                        left : -15}}>
+                        <Bottom
+                        style= {{position: 'absolute',
+                        bottom:0,
+                        left:0,}}/>
+                    </View>
                 </View>
                 
         </ImageBackground>
