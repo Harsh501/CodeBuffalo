@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Button , StyleSheet, Text, View , ImageBackground, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View , ImageBackground, TouchableOpacity } from 'react-native';
 
-
+import Bottom from './Bottom';
 export default class tell_me extends Component {
 
   render() {
     return (
         <View style={styles.container}>
+          
           <ImageBackground 
           source = {require('../images/dog.jpg')}
           style = {{width : '100%' , height : '100%'}}
@@ -24,15 +25,22 @@ export default class tell_me extends Component {
                         <Text style = {{fontSize : 40}}>No</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                    style = {styles.Buttons_no} 
-                    onPress={() => this.props.navigation.navigate('behaviour')} >
-                    <Text style = {{fontSize : 40}}>Yes</Text>
+                      style = {styles.Buttons_no} 
+                      onPress={() => this.props.navigation.navigate('behaviour')} >
+                        <Text style = {{fontSize : 40}}>Yes</Text>
                     </TouchableOpacity>
-                    
+                    <View style = {{position: 'absolute',
+                        bottom:-331,
+                        width : '100%',
+                        left : -200}}>
+                        <Bottom
+                        style= {{position: 'absolute',
+                        bottom:0,
+                        left:0,}}/>
+                    </View>
                 </View>
           </View>
         </ImageBackground>
-  
       </View>
     )
   }
@@ -52,7 +60,7 @@ const styles = StyleSheet.create({
     color: 'black' , 
     textAlign: 'left',
     position: 'absolute',
-    top: 130,
+    top: 110,
     left: 25,
   },
   Buttons:{
@@ -67,12 +75,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center',
     position: 'absolute',
-    bottom: -30,
+    bottom: -5,
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
     borderBottomRightRadius: 40,
     borderBottomLeftRadius: 40,
-    left:20
+    left:0,
+    marginLeft:15
   },
   Buttons_no:{
     width: '40%', 
@@ -86,11 +95,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center',
     position: 'absolute',
-    bottom: -30,
+    bottom: -5,
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
     borderBottomRightRadius: 40,
     borderBottomLeftRadius: 40,
-    left:-165
+    left:-150,
+    marginLeft : -10
   }
 });
