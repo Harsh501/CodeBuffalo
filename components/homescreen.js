@@ -84,7 +84,7 @@ export default class homescreen extends Component {
               <Text
               style = {{
                 fontSize : 100 ,
-                fontFamily: 'AvenirNextCondensed-DemiBold',
+                fontFamily: 'Gill Sans',
                 color :'white',
                 flexWrap:'wrap',
                 bottom : 230,
@@ -95,7 +95,7 @@ export default class homescreen extends Component {
               <Text
               style = {{
                 fontSize : 35 ,
-                fontFamily: 'AvenirNextCondensed-DemiBold',
+                fontFamily: 'Gill Sans',
                 color :'white',
                 bottom : 228,
                 justifyContent : 'center',
@@ -117,9 +117,9 @@ export default class homescreen extends Component {
                 style = {styles.Buttons_2}
                 onPress={() => logInWithFacebook()}
                >
-                 <Image source={require('../images/google.png')} style ={{width : 30 , height : 30 , left :-110 , bottom : -5}}></Image>
-                 <Text style ={{color :'white' , fontSize :20 , bottom : 20}}>
-                   Sign in with facebook
+                 <Image source={require('../images/fb.jpg')} style ={{width : 38 , height : 38 , left :-117 , bottom : -9}}></Image>
+                 <Text style ={{color :'white' , fontSize :20 , bottom : 20 , marginLeft : 23}}>
+                   Sign in with Facebook
                  </Text>
                </TouchableOpacity>
           </View>
