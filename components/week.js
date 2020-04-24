@@ -10,9 +10,8 @@ import {
   ImageBackground
 } from 'react-native';
 import Constants from 'expo-constants';
-import * as Animatable from 'react-native-animatable';
-import Collapsible from 'react-native-collapsible';
-import Accordion from 'react-native-collapsible/Accordion';
+import { PieChart } from "react-native-chart-kit";
+
 
 
 const SELECTORS = [
@@ -28,7 +27,43 @@ const SELECTORS = [
     title: 'Year',
   },
 ];
-
+const data = [
+    {
+      name: "18 April",
+      population: 1,
+      color: "rgba(131, 167, 234, 1)",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+    {
+      name: "19 April",
+      population: 1,
+      color: "green",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+    {
+      name: "20 April ",
+      population: 1,
+      color: "red",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+    {
+      name: "21 April",
+      population: 1,
+      color: "yellow",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+    {
+      name: "22 April",
+      population: 1,
+      color: "rgb(0, 0, 255)",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    }
+  ];
 export default class day extends Component {
   state = {
     activeSections: [],
@@ -67,7 +102,46 @@ export default class day extends Component {
               </TouchableOpacity>
             ))}
           </View>
-          <Text >helloo</Text>
+          <PieChart
+  data={data}
+  width={350}
+  height={280}
+  chartConfig={{
+    backgroundColor: "#e26a00",
+    backgroundGradientFrom: "#fb8c00",
+    backgroundGradientTo: "#ffa726",
+    decimalPlaces: 2, // optional, defaults to 2dp
+    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    style: {
+      borderRadius: 16
+    },
+    propsForDots: {
+      r: "6",
+      strokeWidth: "2",
+      stroke: "#ffa726"
+    }
+  }}
+  accessor="population"
+  backgroundColor="transparent"
+  paddingLeft="35"
+/>
+<View style= {styles.container} style ={{left : 20}}>
+<Text style = {{fontSize : 25  ,left  :0 , color : 'gray' ,marginBottom: 20 , fontFamily: 'Gill Sans'}}>
+    You checked-in {"\n"} 
+        <Text style = {{fontSize : 35  }}> 21{"\n"}
+            times
+        </Text>
+</Text>
+<Text style = {{fontSize : 25  ,left  :0 , color : 'gray',fontFamily: 'Gill Sans' ,marginBottom : 4}}>
+    You felt {"\n"} 
+    <Text style = {{fontSize : 35  }}>
+        Happy {"\n"}
+    </Text>
+    in 40% of the{"\n"}
+    check-in's
+</Text>
+</View>
       </View>
     );
   }
