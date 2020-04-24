@@ -7,6 +7,7 @@ import {
   View,
   Image,
   TouchableOpacity,
+  ImageBackground
 } from 'react-native';
 import Constants from 'expo-constants';
 import * as Animatable from 'react-native-animatable';
@@ -108,6 +109,10 @@ export default class day extends Component {
 
     return (
       <View style={styles.container}>
+            <ImageBackground 
+          source = {require('../images/tab.jpg')}
+          style = {{width : '100%' , height : '100%'}}
+          >
         <ScrollView contentContainerStyle={{ paddingTop: 30 }}>
           <View style={styles.selectors}>
             
@@ -153,6 +158,7 @@ export default class day extends Component {
             onChange={this.setSections}
           />
         </ScrollView>
+        </ImageBackground>
       </View>
     );
   }
@@ -161,7 +167,7 @@ export default class day extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'transparent',
     paddingTop: Constants.statusBarHeight,
   },
   title: {
@@ -171,7 +177,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   header: {
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'transparent',
     padding: 25,
     borderBottomWidth : 3,
     borderLeftWidth : 3,
@@ -187,6 +193,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     left : 10,
     position : 'absolute',
+    backgroundColor:'transparent'
   },
   headerText_1: {
     justifyContent : 'center',
@@ -194,7 +201,8 @@ const styles = StyleSheet.create({
     fontSize: 19,
     fontWeight: '500',
     left : 104,
-    top : 3
+    top : 3,
+    backgroundColor:'transparent'
   },
   content: {
     padding: 20,
@@ -202,19 +210,19 @@ const styles = StyleSheet.create({
   },
   active: {
     backgroundColor: 'rgba(255,255,255,1)',
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   inactive: {
-    backgroundColor: 'rgba(245,252,255,1)',
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   selectors: {
     marginBottom: 10,
     flexDirection: 'row',
     justifyContent: 'center',
     left : 78,
-    top : -10
+    top : -10,
   },
   selector: {
-    backgroundColor: '#F5FCFF',
     padding: 10,
   },
   activeSelector: {
@@ -225,13 +233,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     padding: 10,
-    left : 10
+    left : 10,
   },
   multipleToggle: {
     flexDirection: 'row',
     justifyContent: 'center',
     marginVertical: 30,
     alignItems: 'center',
+    
   },
   multipleToggle__title: {
     fontSize: 16,
