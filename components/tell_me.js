@@ -7,7 +7,7 @@ import homescreen from './homescreen';
 import emergency from './emergency';
 import second_screen from './second_screen';
 import { Ionicons } from '@expo/vector-icons';
-import analytics from './analytics';
+import day from './day';
 
 
 export default class tell_me extends Component {
@@ -51,11 +51,11 @@ export default class tell_me extends Component {
           },
       },
       Screenfour: { 
-          screen: analytics,
+          screen: day,
           navigationOptions: {
               tabBarLabel: 'Health Analysis', 
               tabBarIcon: ({ tintColor }) => (
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('analytics')}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Day')}>
                   <Ionicons name="ios-analytics" color={tintColor} size={25}  />
                 </TouchableOpacity>
               ),

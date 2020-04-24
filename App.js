@@ -10,7 +10,7 @@ import behaviour from './components/behaviour';
 import feel from './components/feel'
 import toolKit from './components/toolKit';
 import emergency from './components/emergency';
-import analytics from './components/analytics';
+import day from './components/day';
 
 
 export default class App extends React.Component {
@@ -62,12 +62,12 @@ const AppNavigator = createStackNavigator({
       header: null,
     }
 },
-analytics: { 
-  screen: analytics,
-  navigationOptions: {
-    header: null,
+Day:{
+  screen:day,
+  navigationOptions:{
+    header:null
   }
-},
+}
 });
 
 const AppContainer = createAppContainer(AppNavigator);

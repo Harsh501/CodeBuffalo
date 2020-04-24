@@ -9,7 +9,7 @@ import homescreen from './homescreen';
 import emergency from './emergency';
 import second_screen from './second_screen';
 import { Ionicons } from '@expo/vector-icons';
-import analytics from './analytics';
+import day from './day';
 import tell_me from './tell_me';
 
 
@@ -160,11 +160,11 @@ export default class behaviour extends Component {
             },
         },
         Screenfour: { 
-            screen: analytics,
+            screen: day,
             navigationOptions: {
                 tabBarLabel: 'Health Analysis', 
                 tabBarIcon: ({ tintColor }) => (
-                  <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('analytics')}>
+                  <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('day')}>
                   <Ionicons name="ios-analytics" color={tintColor} size={25}  />
                   </TouchableOpacity>
                 ),

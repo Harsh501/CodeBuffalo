@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import {  StyleSheet, Text, View , TouchableOpacity , Image } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Linking } from 'react-native';
 import * as SMS from 'expo-sms';
+import homescreen from './homescreen';
+
+import second_screen from './second_screen';
+import { Ionicons } from '@expo/vector-icons';
+import day from './day';
+import tell_me from './tell_me';
 
 
 
@@ -10,6 +18,8 @@ import * as SMS from 'expo-sms';
 export default class emergency extends Component{
 
     render(){
+
+
         phone = () => {
             Linking.openURL('tel:7168343131');
           };
@@ -49,6 +59,8 @@ export default class emergency extends Component{
                 <TouchableOpacity style= {styles.erie} onPress={() => SendMessage()}>
                     <Text style = {{color : 'white' , fontSize : 20}}>Notify Jack</Text>
                 </TouchableOpacity>
+              
+                
             </View>
         )
     }
