@@ -81,7 +81,7 @@ const SELECTORS = [
   },
   {
     title: 'Week',
-    value: 2,
+    
   },
   {
     title: 'Year',
@@ -129,11 +129,6 @@ export default class day extends Component {
         {section.content}
         <Text style= {{fontSize : 20 ,position : 'relative' , left : 5 , top : 12}}>Why do you feel that way ?  </Text>   
         <Text style= {{fontSize : 20 ,position : 'relative' , right : -290 ,top : -10}}>{section.reason}</Text>   
-
-            
-        
-        
-        
       </Animatable.View>
     );
   }
@@ -155,7 +150,7 @@ export default class day extends Component {
                 
               <TouchableOpacity
                 key={selector.title}
-                onPress={() => this.setSections([selector.value])}
+                onPress={() => this.props.navigation.navigate(selector.title)}
               >
                 <View style={styles.selector}>
                   <Text

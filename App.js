@@ -11,6 +11,7 @@ import feel from './components/feel'
 import toolKit from './components/toolKit';
 import emergency from './components/emergency';
 import day from './components/day';
+import week from './components/week';
 
 
 export default class App extends React.Component {
@@ -67,7 +68,14 @@ Day:{
   navigationOptions:{
     header:null
   }
+},
+Week:{
+  screen:week,
+  navigationOptions:{
+    header:null
+  }
 }
+
 });
 
 const AppContainer = createAppContainer(AppNavigator);
