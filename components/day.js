@@ -19,45 +19,72 @@ const BACON_IPSUM =
 
 const CONTENT = [
   {
-    title: 'Sat, April 18                                              2',
+    title: 'Sat, April 18                                              1',
     content: <Image
     source={require("../images/happy_logo.jpeg")}
-    style={{height : 80 , width : 80 , left :7}}
-    />
+    style={{height : 50 , width : 50 , position : 'relative' , right : -290 , top : -35   }}
+    />,
+    time : '12:53 pm',
+    reason : 'School'
   },
   {
     title: 'Sun, April 19                                             1',
-    content: BACON_IPSUM,
+    content : <Image
+    source={require("../images/calm.jpg")}
+    style={{height : 50 , width : 50 , position : 'relative' , right : -290 , top : -35   }}
+    />,
+    time : '1:13 pm',
+    reason : 'partner'
   },
   {
-    title: 'Mon, April 20                                           3',
-    content: BACON_IPSUM,
+    title: 'Mon, April 20                                           1',
+    content: <Image
+    source={require("../images/nervous_1.png")}
+    style={{height : 50 , width : 50 , position : 'relative' , right : -290 , top : -35   }}
+    />,
+    time : '7:33 pm',
+    reason : 'Dating'
   },
   {
     title: 'Tue, April 21                                             1',
-    content: BACON_IPSUM,
+    content: <Image
+    source={require("../images/neutral_1.jpg")}
+    style={{height : 50 , width : 50 , position : 'relative' , right : -290 , top : -35   }}
+    />,
+    time : '2:53 am',
+    reason : 'Friends'
   },
   {
-    title: 'Wed, April 22                                           2',
-    content: BACON_IPSUM,
+    title: 'Wed, April 22                                           1',
+    content: <Image
+    source={require("../images/sad_1.jpg")}
+    style={{height : 50 , width : 50 , position : 'relative' , right : -290 , top : -35   }}
+    />,
+    time : '10:50 am',
+    reason : 'Work'
   },
   {
     title: 'Thu, April 23                                            1',
-    content: BACON_IPSUM,
+    content: <Image
+    source={require("../images/star_eyed.jpeg")}
+    style={{height : 50 , width : 50 , position : 'relative' , right : -290 , top : -35   }}
+    />,
+    time : '4:30 am',
+    reason : 'Family'
   },
 ];
 // Day week year
 const SELECTORS = [
   {
-    title: 'First',
+    title: 'Day',
     value: 0,
   },
   {
-    title: 'Third',
+    title: 'Week',
     value: 2,
   },
   {
-    title: 'None',
+    title: 'Year',
   },
 ];
 
@@ -97,9 +124,16 @@ export default class day extends Component {
         style={[styles.content, isActive ? styles.active : styles.inactive]}
         transition="backgroundColor"
       >
-        <Animatable.Text animation={isActive ? 'bounceIn' : undefined}>
-          {section.content}
-        </Animatable.Text>
+        <Text style= {{fontSize : 20, marginBottom : 10 }}> Checked in at : {section.time}</Text>    
+        <Text style= {{fontSize : 20 ,position : 'relative' , left : 5 }}>How do you feel ? </Text>   
+        {section.content}
+        <Text style= {{fontSize : 20 ,position : 'relative' , left : 5 , top : 12}}>Why do you feel that way ?  </Text>   
+        <Text style= {{fontSize : 20 ,position : 'relative' , right : -290 ,top : -10}}>{section.reason}</Text>   
+
+            
+        
+        
+        
       </Animatable.View>
     );
   }
@@ -142,8 +176,6 @@ export default class day extends Component {
             <View style={styles.header}>
               <Text style={styles.headerText}>Date</Text>
               <Text style={styles.headerText_1}>Check in's</Text>
-            
-
             </View>
           
           {/* <Collapsible collapsed={this.state.collapsed} align="center"/> */}
@@ -205,8 +237,9 @@ const styles = StyleSheet.create({
     backgroundColor:'transparent'
   },
   content: {
-    padding: 20,
+    padding: 10,
     backgroundColor: '#fff',
+    position : 'relative',
   },
   active: {
     backgroundColor: 'rgba(255,255,255,1)',
@@ -220,7 +253,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     left : 78,
-    top : -10,
+    top : -22,
   },
   selector: {
     padding: 10,
