@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Constants from 'expo-constants';
 import { PieChart } from "react-native-chart-kit";
+import Lightbox from 'react-native-lightbox';
 
 
 
@@ -103,44 +104,69 @@ export default class day extends Component {
             ))}
           </View>
           <PieChart
-  data={data}
-  width={350}
-  height={280}
-  chartConfig={{
-    backgroundColor: "#e26a00",
-    backgroundGradientFrom: "#fb8c00",
-    backgroundGradientTo: "#ffa726",
-    decimalPlaces: 2, // optional, defaults to 2dp
-    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-    labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-    style: {
-      borderRadius: 16
-    },
-    propsForDots: {
-      r: "6",
-      strokeWidth: "2",
-      stroke: "#ffa726"
-    }
-  }}
-  accessor="population"
-  backgroundColor="transparent"
-  paddingLeft="35"
-/>
-<View style= {styles.container} style ={{left : 20}}>
-<Text style = {{fontSize : 25  ,left  :0 , color : 'gray' ,marginBottom: 20 , fontFamily: 'Gill Sans'}}>
-    You checked-in {"\n"} 
-        <Text style = {{fontSize : 35  }}> 21{"\n"}
-            times
-        </Text>
-</Text>
-<Text style = {{fontSize : 25  ,left  :0 , color : 'gray',fontFamily: 'Gill Sans' ,marginBottom : 4}}>
-    You felt {"\n"} 
-    <Text style = {{fontSize : 35  }}>
-        Happy {"\n"}
-    </Text>
-    in 40% of the{"\n"}
-    check-in's
-</Text>
+            data={data}
+            width={350}
+            height={280}
+            chartConfig={{
+              backgroundColor: "#e26a00",
+              backgroundGradientFrom: "#fb8c00",
+              backgroundGradientTo: "#ffa726",
+              decimalPlaces: 2, // optional, defaults to 2dp
+              color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+              labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+              style: {
+                borderRadius: 16
+              },
+              propsForDots: {
+                r: "6",
+                strokeWidth: "2",
+                stroke: "#ffa726"
+              }
+            }}
+            accessor="population"
+            backgroundColor="transparent"
+            paddingLeft="29"
+          />
+          <View style= {styles.container} style ={{left : 20}}>
+          <Text style = {{fontSize : 25  ,left  :0 , color : 'gray' ,marginBottom: 20 , fontFamily: 'Gill Sans'}}>
+            You checked-in {"\n"} 
+            <Text style = {{fontSize : 35  }}> 21{"\n"}
+              times
+            </Text>
+          </Text>
+          <Text style = {{
+                    fontSize : 25 ,
+                    left  :0 , 
+                    color : 'gray',
+                    fontFamily: 'Gill Sans',
+                    marginBottom : 4}}>
+            You felt {"\n"} 
+            <Text style = {{fontSize : 35  }}>
+              Happy {"\n"}
+          </Text>
+            in 40% of the{"\n"}
+            check-in's
+          </Text>
+          <Text style ={{
+                        bottom  :250,
+                        left : 240,
+                        fontSize : 25,
+                        color : 'gray',
+                        fontFamily: 'Gill Sans',
+                        marginBottom : 18
+                        }}>You Liked!</Text>
+          <Image
+                    style={{ 
+                      height: 150,
+                      width: 150,
+                      bottom  :250,
+                      left : 200,
+                      borderColor :'black',
+                      borderWidth : 3,
+                      borderRadius : 20 
+                    }}
+                    source={require('../images/liked_1.png')}
+                  />
 </View>
       </View>
     );
