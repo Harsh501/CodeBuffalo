@@ -17,6 +17,8 @@ With the provided email, therapists can review their clients weekly Serenus chec
 Try it out below :
 https://harshrawal430669.invisionapp.com/overview/LandingPage-ck9au4v250xlr018z4w6nm6a4/screens?v=83EW4eIryJb%2FW6rgv%2Bno3A%3D%3D&linkshare=urlcopied
 <br/>
+<b>Error in the video Link of uploaded Video PLease use this video Link: </b>
+https://youtu.be/tnOgNUQZT80
 
 Through Serenus we can lower the barrier of entry to therapy and destigmatize mental health by normalizing the process of mapping your experiences
 
