@@ -164,7 +164,7 @@ export default class behaviour extends Component {
             navigationOptions: {
                 tabBarLabel: 'Health Analysis', 
                 tabBarIcon: ({ tintColor }) => (
-                  <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('day')}>
+                  <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('Day')}>
                   <Ionicons name="ios-analytics" color={tintColor} size={25}  />
                   </TouchableOpacity>
                 ),

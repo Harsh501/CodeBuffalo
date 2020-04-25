@@ -12,6 +12,15 @@ import {
 import Constants from 'expo-constants';
   import { BarChart} from 'react-native-svg-charts'
   import { LineChart, XAxis} from 'react-native-svg-charts'
+  import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+// import BottomNav from './Bottom';
+import homescreen from './homescreen';
+import emergency from './emergency';
+import second_screen from './second_screen';
+import { Ionicons } from '@expo/vector-icons';
+import day from './day';
+import tell_me from './tell_me';
 
 
 
@@ -47,7 +56,87 @@ export default class year extends Component {
     const { multipleSelect, activeSections } = this.state;
     const fill = 'rgb(120, 65, 244)'
     const data = [20,34,12,45,67,78,89,87,43,49,10,23 ]
-    
+    const NavStack = createBottomTabNavigator({
+        ScreenOne: { 
+            screen:emergency,
+            navigationOptions: {
+                tabBarLabel: 'Panic', 
+                tabBarIcon: ({ tintColor , navigation }) => (
+                    <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('emergency')}>
+                    <Ionicons name="ios-alert" color={tintColor} size={25}  />
+                    </TouchableOpacity>
+                ),
+                tabBarOptions: { 
+                    activeTintColor:'red',
+                    inactiveTintColor:'gray',
+                    style: {
+                        borderTopWidth: 0,
+                        backgroundColor: 'transparent',
+                    }
+                },
+                
+            },
+        },
+        ScreenTwo: { 
+            screen: second_screen,
+            navigationOptions: {
+                tabBarLabel: 'Home', 
+                tabBarIcon: ({ tintColor }) => (
+                  <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('second_page')}>
+                  <Ionicons name="ios-home" color={tintColor} size={25}  />
+                  </TouchableOpacity>
+                ),
+                tabBarOptions: { 
+                    activeTintColor:'black',
+                    inactiveTintColor:'black',
+                    style: {
+                        borderTopWidth: 0,
+                        backgroundColor: 'transparent',
+                    }
+                }
+            },
+        },
+        Screenthree: { 
+            screen: tell_me,
+            navigationOptions: {
+                tabBarLabel: 'Start Over', 
+                tabBarIcon: ({ tintColor }) => (
+                  <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('tell_me')}>
+                  <Ionicons name="ios-add" color={tintColor} size={30}  />
+                  </TouchableOpacity>
+                ),
+                tabBarOptions: { 
+                    activeTintColor:'black',
+                    inactiveTintColor:'black',
+                    style: {
+                        borderTopWidth: 0,
+                        backgroundColor: 'transparent',
+                    }
+                }
+            },
+        },
+        Screenfour: { 
+            screen: day,
+            navigationOptions: {
+                tabBarLabel: 'Health Analysis', 
+                tabBarIcon: ({ tintColor }) => (
+                  <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('day')}>
+                  <Ionicons name="ios-analytics" color={tintColor} size={25}  />
+                  </TouchableOpacity>
+                ),
+                tabBarOptions: { 
+                    
+                    style: {
+                        borderTopWidth: 0,
+                        backgroundColor: 'transparent',
+                    }
+                }
+            },
+        }
+        
+      });
+      
+    const Bottom = createAppContainer(NavStack);
     return (
       <View style={styles.container}>
         <ImageBackground
@@ -89,6 +178,73 @@ export default class year extends Component {
                     svg={{ fontSize: 10, fill: 'black' }}
                 />
         </ImageBackground>
+        <Text style ={{
+                        bottom  :370,
+                        left : 95,
+                        fontSize : 20,
+                        color : 'black',
+                        marginBottom : 2,
+                        fontFamily: 'Gill Sans',
+                        
+                        }}>Number of Check-ins {"\n"}over the Year</Text>
+        <Text style ={{
+                        bottom  :360,
+                        left : 14,
+                        color : 'gray',
+                        fontSize : 20,
+                        
+                        fontFamily: 'Gill Sans',
+                        marginBottom : 18
+                        }}>
+                            You check-in {"\n"} 
+                            <Text style = {{fontSize : 35  }}>557{"\n"}</Text>
+                            over the Year
+        </Text>
+        <Text style ={{
+                        bottom  :360,
+                        left : 14,
+                        color : 'gray',
+                        fontSize : 20,         
+                        fontFamily: 'Gill Sans',
+                        marginBottom : 18
+                        }}>
+                            You Felt {"\n"} 
+                            <Text style = {{fontSize : 35  }}>Neutral{"\n"}</Text>
+                            in 60% of your {"\n"}check-ins
+        </Text>
+        <Text style ={{
+                        bottom  :580,
+                        left : 190,
+                        color : 'gray',
+                        fontSize : 20,         
+                        fontFamily: 'Gill Sans',
+                        
+                        }}>
+                            <Text style = {{fontSize : 20  }}>Your Favourite{"\n"}</Text>
+                            Quote was
+        </Text>
+        <Image
+                    style={{ 
+                      height: 170,
+                      width: 170,
+                      bottom  :570,
+                      left : 190,
+                      borderColor :'black',
+                      borderWidth : 3,
+                      borderRadius : 20,
+                    }}
+                    source={require('../images/fav.jpg')}
+                  />
+                <View style = {{position: 'absolute',
+                        bottom:4,
+                        width : '100%',
+                        left : -15}}>
+                        <Bottom
+                        style= {{position: 'absolute',
+                        bottom:0,
+                        left:0,}}/>
+                    </View>
+
       </View>
     );
   }

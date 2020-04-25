@@ -11,6 +11,14 @@ import {
 } from 'react-native';
 import Constants from 'expo-constants';
 import { PieChart } from "react-native-chart-kit";
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+// import BottomNav from './Bottom';
+import homescreen from './homescreen';
+import emergency from './emergency';
+import second_screen from './second_screen';
+import { Ionicons } from '@expo/vector-icons';
+import tell_me from './tell_me';
 
 
 
@@ -79,6 +87,87 @@ export default class day extends Component {
 
   render() {
     const { multipleSelect, activeSections } = this.state;
+    const NavStack = createBottomTabNavigator({
+      ScreenOne: { 
+          screen:emergency,
+          navigationOptions: {
+              tabBarLabel: 'Panic', 
+              tabBarIcon: ({ tintColor , navigation }) => (
+                  <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('emergency')}>
+                  <Ionicons name="ios-alert" color={tintColor} size={25}  />
+                  </TouchableOpacity>
+              ),
+              tabBarOptions: { 
+                  activeTintColor:'red',
+                  inactiveTintColor:'gray',
+                  style: {
+                      borderTopWidth: 0,
+                      backgroundColor: 'transparent',
+                  }
+              },
+              
+          },
+      },
+      ScreenTwo: { 
+          screen: second_screen,
+          navigationOptions: {
+              tabBarLabel: 'Home', 
+              tabBarIcon: ({ tintColor }) => (
+                <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('second_page')}>
+                <Ionicons name="ios-home" color={tintColor} size={25}  />
+                </TouchableOpacity>
+              ),
+              tabBarOptions: { 
+                  activeTintColor:'black',
+                  inactiveTintColor:'black',
+                  style: {
+                      borderTopWidth: 0,
+                      backgroundColor: 'transparent',
+                  }
+              }
+          },
+      },
+      Screenthree: { 
+          screen: tell_me,
+          navigationOptions: {
+              tabBarLabel: 'Start Over', 
+              tabBarIcon: ({ tintColor }) => (
+                <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('tell_me')}>
+                <Ionicons name="ios-add" color={tintColor} size={30}  />
+                </TouchableOpacity>
+              ),
+              tabBarOptions: { 
+                  activeTintColor:'black',
+                  inactiveTintColor:'black',
+                  style: {
+                      borderTopWidth: 0,
+                      backgroundColor: 'transparent',
+                  }
+              }
+          },
+      },
+      Screenfour: { 
+          screen: day,
+          navigationOptions: {
+              tabBarLabel: 'Health Analysis', 
+              tabBarIcon: ({ tintColor }) => (
+                <TouchableOpacity title = 'panic' onPress={() => this.props.navigation.navigate('day')}>
+                <Ionicons name="ios-analytics" color={tintColor} size={25}  />
+                </TouchableOpacity>
+              ),
+              tabBarOptions: { 
+                  
+                  style: {
+                      borderTopWidth: 0,
+                      backgroundColor: 'transparent',
+                  }
+              }
+          },
+      }
+      
+    });
+    
+  const Bottom = createAppContainer(NavStack);
 
     return (
       <View style={styles.container}>
@@ -134,7 +223,7 @@ export default class day extends Component {
           <View style= {styles.container} style ={{left : 20}}>
           <Text style = {{fontSize : 25  ,left  :0 , color : 'gray' ,marginBottom: 20 , fontFamily: 'Gill Sans'}}>
             You checked-in {"\n"} 
-            <Text style = {{fontSize : 35  }}> 21{"\n"}
+            <Text style = {{fontSize : 35  }}> 5{"\n"}
               times
             </Text>
           </Text>
@@ -173,6 +262,15 @@ export default class day extends Component {
                     source={require('../images/liked_1.png')}
                   />
           </View>
+          <View style = {{position: 'absolute',
+                        bottom:2,
+                        width : '100%',
+                        left : -15}}>
+                        <Bottom
+                        style= {{position: 'absolute',
+                        bottom:0,
+                        left:0,}}/>
+                    </View>
         </ImageBackground>
       </View>
     );
