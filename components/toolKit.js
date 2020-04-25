@@ -1,34 +1,26 @@
-import * as React from 'react';
+import React from 'react';
+import { Image, ScrollView, Text, View } from 'react-native';
 
-import { StyleSheet, Text, View , ImageBackground, TouchableOpacity } from 'react-native';
-// import { Video } from 'expo-av';
+const logo = {
+  uri: 'https://reactnative.dev/img/tiny_logo.png',
+  width: 64,
+  height: 64
+};
 
-export default class toolKit extends React.Component {
-
-
-  render() {
-    return (
-        <View style={styles.container}>
-        <Text style={{ textAlign: 'center' }}> React Native Video </Text>
-        {/* <Video
-          source={{ uri: 'https://www.youtube.com/watch?v=KEf3BAPbqvM' }}
-              shouldPlay
-          resizeMode="cover"
-          style={{ width : 100, height: 300 }}
-        /> */}
-          </View>
-    )
-
-  }
-}
-
-
-var styles = StyleSheet.create({
-    backgroundVideo: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-    },
-  });
+export default toolKit = () => (
+  <View style ={{flex: 1}}>
+  <Text style={{ fontSize: 26 , top  :30 }}>Something You might Like!</Text>
+  <ScrollView style ={{top  :40}}>
+    
+    <Image source={require('../images/mot1.jpg')} style ={{width : 200 , height : 200}}></Image>
+    <Image source={require('../images/mot2.jpg')} style ={{width : 200 , height : 200}}></Image>
+    <Image source={require('../images/mot3.jpeg')} style ={{width : 200 , height : 200}}></Image>
+    <Image source={require('../images/mot4.jpg')} style ={{width : 200 , height : 200}}></Image>
+    <Image source={require('../images/mot5.jpg')} style ={{width : 200 , height : 200}}></Image>
+    <Image source={require('../images/mot6.jpg')} style ={{width : 200 , height : 200}}></Image>
+    <Image source={require('../images/mot7.jpeg')} style ={{width : 200 , height : 200}}></Image>
+    <Image source={require('../images/liked_1.png')} style ={{width : 200 , height : 200}}></Image>
+    <Image source={require('../images/fav.jpg')} style ={{width : 200 , height : 200}}></Image>
+  </ScrollView>
+  </View>
+);
