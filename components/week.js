@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Constants from 'expo-constants';
 import { PieChart } from "react-native-chart-kit";
-import Lightbox from 'react-native-lightbox';
+
 
 
 
@@ -82,6 +82,10 @@ export default class day extends Component {
 
     return (
       <View style={styles.container}>
+        <ImageBackground
+          source = {require('../images/tab.jpg')}
+          style = {{width : '100%' , height : '100%'}}
+        >
           <View style={styles.selectors}>
             {SELECTORS.map(selector => (
                 
@@ -163,11 +167,13 @@ export default class day extends Component {
                       left : 200,
                       borderColor :'black',
                       borderWidth : 3,
-                      borderRadius : 20 
+                      borderRadius : 20,
+                      
                     }}
                     source={require('../images/liked_1.png')}
                   />
-</View>
+          </View>
+        </ImageBackground>
       </View>
     );
   }
