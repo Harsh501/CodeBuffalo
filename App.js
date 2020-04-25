@@ -12,6 +12,7 @@ import toolKit from './components/toolKit';
 import emergency from './components/emergency';
 import day from './components/day';
 import week from './components/week';
+import year from './components/year';
 
 
 export default class App extends React.Component {
@@ -71,6 +72,12 @@ Day:{
 },
 Week:{
   screen:week,
+  navigationOptions:{
+    header:null
+  }
+},
+Year:{
+  screen:year,
   navigationOptions:{
     header:null
   }
